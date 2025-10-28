@@ -168,7 +168,7 @@ const SearchForm = () => {
       value={maxPriceQuery}
       onChange={(e) => {
         const val = Number(e.target.value);
-        if (val >= minPriceQuery) setMaxPriceQuery(val);``
+        if (val >= minPriceQuery) setMaxPriceQuery(val);
       }}
       className="range-max"
     />
