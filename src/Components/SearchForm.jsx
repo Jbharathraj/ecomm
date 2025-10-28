@@ -140,6 +140,7 @@ const SearchForm = () => {
           </div>
         </div>
 
+
         {/* ✅ Amazon-style Dual Slider */}
 <div className="form-group price-slider">
   <label>Price:</label>
@@ -167,7 +168,7 @@ const SearchForm = () => {
       value={maxPriceQuery}
       onChange={(e) => {
         const val = Number(e.target.value);
-        if (val >= minPriceQuery) setMaxPriceQuery(val);
+        if (val >= minPriceQuery) setMaxPriceQuery(val);``
       }}
       className="range-max"
     />
