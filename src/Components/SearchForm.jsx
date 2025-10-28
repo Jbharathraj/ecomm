@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Search.css";
-import StarRating from "./StarRating.jsx"; 
+import StarRating from "./StarRating.jsx";
 import data from "../Data/data.jsx";
-import Options from "./Options.jsx"; 
-
+import Options from "./Options.jsx";
 
 const SearchForm = () => {
   const [colorQuery, setColorQuery] = useState("");
   const [materialQuery, setMaterialQuery] = useState("");
-  const [minPriceQuery, setMinPriceQuery] = useState(21);
-  const [maxPriceQuery, setMaxPriceQuery] = useState(600);
+  const [minPriceQuery, setMinPriceQuery] = useState(100);
+  const [maxPriceQuery, setMaxPriceQuery] = useState(500);
   const [sizeQuery, setSizeQuery] = useState("");
   const [starQuery, setStarQuery] = useState("");
   const [categoryQuery, setCategoryQuery] = useState("");
@@ -45,7 +44,7 @@ const SearchForm = () => {
     setResults(filtered);
   };
 
-  // 🪄 Auto-run search whenever filters change
+  // Auto search when filters change
   useEffect(() => {
     handleSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,35 +60,29 @@ const SearchForm = () => {
 
   // --- Options setup ---
   const [colors, setColors] = useState([]);
-  useEffect(() => {
-    const colorList = Options.getColors();
-    setColors(colorList);
-  }, []);
-
   const [materials, setMaterials] = useState([]);
-  useEffect(() => {
-    const materialList = Options.getMaterial();
-    setMaterials(materialList);
-  }, []);
-
   const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    const categoryList = Options.getCategory();
-    setCategories(categoryList);
-  }, []);
-
   const [sizes, setSizes] = useState([]);
+
   useEffect(() => {
+    setColors(Options.getColors());
+    setMaterials(Options.getMaterial());
+    setCategories(Options.getCategory());
     const sizeOrder = ["S", "M", "L", "XL", "XXL", "XXXL"];
     const sizeList = Options.getSize();
     const sortedSizes = sizeOrder.filter((size) => sizeList.includes(size));
     setSizes(sortedSizes);
   }, []);
 
+  // Helper for range fill
+  const min = 20;
+  const max = 600;
+  const getPercent = (value) => ((value - min) / (max - min)) * 100;
+
   return (
     <div className="search-container">
       <form className="search-form" onSubmit={(e) => e.preventDefault()}>
-
+        {/* Color */}
         <div className="form-group">
           <label>Color:</label>
           <div className="radio-group color-radio-group">
@@ -123,6 +116,7 @@ const SearchForm = () => {
           </div>
         </div>
 
+        {/* Material */}
         <div className="form-group">
           <label>Material:</label>
           <div className="radio-group">
@@ -146,42 +140,42 @@ const SearchForm = () => {
           </div>
         </div>
 
-        <div className="form-group price-slider">
-          <label>Price:</label>
-          <div className="price-values">
-             ₹{minPriceQuery} – ₹{maxPriceQuery}+
-          </div>
+        {/* ✅ Amazon-style Dual Slider */}
+<div className="form-group price-slider">
+  <label>Price:</label>
+  <div className="price-values">
+    ₹{minPriceQuery} – ₹{maxPriceQuery}+
+  </div>
 
-          <div className="slider-container">
-            <input
-              type="range"
-              min="21"
-              max="600"
-              value={minPriceQuery}
-              onChange={(e) => {
-                const val = Number(e.target.value);
-                if (val <= maxPriceQuery) setMinPriceQuery(val);
-              }}
-              className="slider-thumb"
-            />
-            <input
-              type="range"
-              min="20"
-              max="600"
-              value={maxPriceQuery}
-              onChange={(e) => {
-                const val = Number(e.target.value);
-                if (val >= minPriceQuery) setMaxPriceQuery(val);
-              }}
-              className="slider-thumb"
-            />
-          </div>
+  <div className="slider-container">
+    <div className="slider-track"></div>
+    <input
+      type="range"
+      min="20"
+      max="600"
+      value={minPriceQuery}
+      onChange={(e) => {
+        const val = Number(e.target.value);
+        if (val <= maxPriceQuery - 10) setMinPriceQuery(val);
+      }}
+      className="range-min"
+    />
+    <input
+      type="range"
+      min="20"
+      max="600"
+      value={maxPriceQuery}
+      onChange={(e) => {
+        const val = Number(e.target.value);
+        if (val >= minPriceQuery) setMaxPriceQuery(val);
+      }}
+      className="range-max"
+    />
+  </div>
+</div>
 
-          <button type="button" className="price-btn" onClick={handleSearch}>
-            Go
-          </button>
-        </div>
 
+        {/* Size */}
         <div className="form-group">
           <label>Size:</label>
           <div className="radio-group">
@@ -203,16 +197,17 @@ const SearchForm = () => {
           </div>
         </div>
 
+        {/* Rating */}
         <div className="form-group">
           <label htmlFor="star">Customer Reviews</label>
-          {/* Use star rating UI instead of number input */}
           <StarRating
             value={Number(starQuery) || 0}
-            onChange={v => setStarQuery(v)}
+            onChange={(v) => setStarQuery(v)}
             size={28}
           />
         </div>
 
+        {/* Category */}
         <div className="form-group">
           <label>Category:</label>
           <div className="radio-group">
@@ -237,6 +232,7 @@ const SearchForm = () => {
         </div>
       </form>
 
+      {/* Results */}
       <div className="results">
         {results.length > 0 ? (
           <ul className="results-grid">
@@ -252,8 +248,6 @@ const SearchForm = () => {
         ) : (
           (colorQuery ||
             materialQuery ||
-            minPriceQuery ||
-            maxPriceQuery ||
             sizeQuery ||
             starQuery ||
             categoryQuery) && <p>No items found matching your search</p>
