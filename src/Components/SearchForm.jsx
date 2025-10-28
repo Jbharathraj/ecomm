@@ -1,90 +1,162 @@
 import React, { useState, useEffect } from "react";
 import "./Search.css";
-import data from "../Data/data";
-// import { Options } from "../Options/Options";
+import StarRating from "./StarRating.jsx"; 
+import data from "../Data/data.jsx";
+import Options from "./Options.jsx"; 
+
 
 const SearchForm = () => {
-  // Get all prices from data
-  const allPrices = data.map((item) => item.price);
-  const minPrice = Math.min(...allPrices);
-  const maxPrice = Math.max(...allPrices);
-
-  // Local states
   const [colorQuery, setColorQuery] = useState("");
   const [materialQuery, setMaterialQuery] = useState("");
+  const [minPriceQuery, setMinPriceQuery] = useState(21);
+  const [maxPriceQuery, setMaxPriceQuery] = useState(600);
   const [sizeQuery, setSizeQuery] = useState("");
+  const [starQuery, setStarQuery] = useState("");
   const [categoryQuery, setCategoryQuery] = useState("");
-  const [minPriceQuery, setMinPriceQuery] = useState(minPrice);
-  const [maxPriceQuery, setMaxPriceQuery] = useState(maxPrice);
-  const [results, setResults] = useState(data);
+  const [results, setResults] = useState([]);
 
-  // Filter function
-  useEffect(() => {
+  // 🔍 Filter logic
+  const handleSearch = () => {
     const filtered = data.filter((item) => {
-      const matchColor = colorQuery ? item.color.includes(colorQuery) : true;
-      const matchMaterial = materialQuery
-        ? item.material === materialQuery
-        : true;
-      const matchSize = sizeQuery ? item.size.includes(sizeQuery) : true;
-      const matchCategory = categoryQuery
-        ? item.category.includes(categoryQuery)
-        : true;
-      const matchPrice =
-        item.price >= minPriceQuery && item.price <= maxPriceQuery;
+      const matchesColor =
+        !colorQuery ||
+        item.color.some((c) => c.toLowerCase() === colorQuery.toLowerCase());
+      const matchesMaterial =
+        !materialQuery ||
+        item.material.toLowerCase() === materialQuery.toLowerCase();
+      const matchesPrice =
+        (!minPriceQuery || item.price >= Number.parseFloat(minPriceQuery)) &&
+        (!maxPriceQuery || item.price <= Number.parseFloat(maxPriceQuery));
+      const matchesSize = !sizeQuery || item.size.includes(sizeQuery);
+      const matchesStar = !starQuery || item.star >= parseFloat(starQuery);
+      const matchesCategory =
+        !categoryQuery || item.category.includes(categoryQuery);
 
       return (
-        matchColor && matchMaterial && matchSize && matchCategory && matchPrice
+        matchesColor &&
+        matchesMaterial &&
+        matchesPrice &&
+        matchesSize &&
+        matchesStar &&
+        matchesCategory
       );
     });
+
     setResults(filtered);
+  };
+
+  // 🪄 Auto-run search whenever filters change
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     colorQuery,
     materialQuery,
-    sizeQuery,
-    categoryQuery,
     minPriceQuery,
     maxPriceQuery,
+    sizeQuery,
+    starQuery,
+    categoryQuery,
   ]);
 
-  // Extract unique values
-  const colors = [...new Set(data.flatMap((item) => item.color))];
-  const materials = [...new Set(data.map((item) => item.material))];
-  const sizes = [...new Set(data.flatMap((item) => item.size))];
-  const categories = [...new Set(data.flatMap((item) => item.category))];
+  // --- Options setup ---
+  const [colors, setColors] = useState([]);
+  useEffect(() => {
+    const colorList = Options.getColors();
+    setColors(colorList);
+  }, []);
+
+  const [materials, setMaterials] = useState([]);
+  useEffect(() => {
+    const materialList = Options.getMaterial();
+    setMaterials(materialList);
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const categoryList = Options.getCategory();
+    setCategories(categoryList);
+  }, []);
+
+  const [sizes, setSizes] = useState([]);
+  useEffect(() => {
+    const sizeOrder = ["S", "M", "L", "XL", "XXL", "XXXL"];
+    const sizeList = Options.getSize();
+    const sortedSizes = sizeOrder.filter((size) => sizeList.includes(size));
+    setSizes(sortedSizes);
+  }, []);
 
   return (
     <div className="search-container">
-      <div className="search-form">
-        {/* Category */}
+      <form className="search-form" onSubmit={(e) => e.preventDefault()}>
+
         <div className="form-group">
-          <label>Category:</label>
-          <div className="radio-group">
-            {categories.map((cat) => (
-              <label key={cat}>
+          <label>Color:</label>
+          <div className="radio-group color-radio-group">
+            {colors.map((color) => (
+              <label key={color}>
                 <input
                   type="radio"
-                  name="category"
-                  value={cat}
-                  checked={categoryQuery === cat}
-                  onChange={(e) => setCategoryQuery(e.target.value)}
+                  name="color"
+                  value={color}
+                  checked={colorQuery === color}
+                  onClick={() =>
+                    setColorQuery((prev) => (prev === color ? "" : color))
+                  }
+                  readOnly
                 />
-                {cat}
+                <span
+                  className="color-dot"
+                  style={{
+                    backgroundColor: color.toLowerCase(),
+                    border:
+                      color.toLowerCase() === "white"
+                        ? "1px solid #ccc"
+                        : "none",
+                  }}
+                >
+                  {colorQuery === color && <span className="inner-dot"></span>}
+                </span>
+                {color.charAt(0).toUpperCase() + color.slice(1)}
               </label>
             ))}
           </div>
         </div>
 
-        {/* Price Slider */}
+        <div className="form-group">
+          <label>Material:</label>
+          <div className="radio-group">
+            {materials.map((material) => (
+              <label key={material} style={{ marginRight: "10px" }}>
+                <input
+                  type="radio"
+                  name="material"
+                  value={material}
+                  checked={materialQuery === material}
+                  onClick={() =>
+                    setMaterialQuery((prev) =>
+                      prev === material ? "" : material
+                    )
+                  }
+                  readOnly
+                />
+                {material.charAt(0).toUpperCase() + material.slice(1)}
+              </label>
+            ))}
+          </div>
+        </div>
+
         <div className="form-group price-slider">
           <label>Price:</label>
           <div className="price-values">
-            ₹{minPriceQuery} – ₹{maxPriceQuery}+
+             ₹{minPriceQuery} – ₹{maxPriceQuery}+
           </div>
+
           <div className="slider-container">
             <input
               type="range"
-              min={minPrice}
-              max={maxPrice}
+              min="21"
+              max="600"
               value={minPriceQuery}
               onChange={(e) => {
                 const val = Number(e.target.value);
@@ -94,8 +166,8 @@ const SearchForm = () => {
             />
             <input
               type="range"
-              min={minPrice}
-              max={maxPrice}
+              min="20"
+              max="600"
               value={maxPriceQuery}
               onChange={(e) => {
                 const val = Number(e.target.value);
@@ -104,63 +176,26 @@ const SearchForm = () => {
               className="slider-thumb"
             />
           </div>
+
+          <button type="button" className="price-btn" onClick={handleSearch}>
+            Go
+          </button>
         </div>
 
-        {/* Color */}
-        <div className="form-group color-radio-group">
-          <label>Color:</label>
-          {colors.map((color) => (
-            <div key={color}>
-              <input
-                type="radio"
-                id={color}
-                name="color"
-                value={color}
-                checked={colorQuery === color}
-                onChange={(e) => setColorQuery(e.target.value)}
-              />
-              <label htmlFor={color}>
-                <span
-                  className="color-dot"
-                  style={{ backgroundColor: color }}
-                ></span>
-                {color}
-              </label>
-            </div>
-          ))}
-        </div>
-
-        {/* Material */}
-        <div className="form-group">
-          <label>Material:</label>
-          <div className="radio-group">
-            {materials.map((mat) => (
-              <label key={mat}>
-                <input
-                  type="radio"
-                  name="material"
-                  value={mat}
-                  checked={materialQuery === mat}
-                  onChange={(e) => setMaterialQuery(e.target.value)}
-                />
-                {mat}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Size */}
         <div className="form-group">
           <label>Size:</label>
           <div className="radio-group">
             {sizes.map((size) => (
-              <label key={size}>
+              <label key={size} style={{ marginRight: "10px" }}>
                 <input
                   type="radio"
                   name="size"
                   value={size}
                   checked={sizeQuery === size}
-                  onChange={(e) => setSizeQuery(e.target.value)}
+                  onClick={() =>
+                    setSizeQuery((prev) => (prev === size ? "" : size))
+                  }
+                  readOnly
                 />
                 {size}
               </label>
@@ -168,42 +203,61 @@ const SearchForm = () => {
           </div>
         </div>
 
-        <button
-          className="btn-clear-filters"
-          onClick={() => {
-            setColorQuery("");
-            setMaterialQuery("");
-            setSizeQuery("");
-            setCategoryQuery("");
-            setMinPriceQuery(minPrice);
-            setMaxPriceQuery(maxPrice);
-          }}
-        >
-          Clear Filters
-        </button>
-      </div>
+        <div className="form-group">
+          <label htmlFor="star">Customer Reviews</label>
+          {/* Use star rating UI instead of number input */}
+          <StarRating
+            value={Number(starQuery) || 0}
+            onChange={v => setStarQuery(v)}
+            size={28}
+          />
+        </div>
 
-      {/* Results */}
+        <div className="form-group">
+          <label>Category:</label>
+          <div className="radio-group">
+            {categories.map((category) => (
+              <label key={category} style={{ marginRight: "10px" }}>
+                <input
+                  type="radio"
+                  name="category"
+                  value={category}
+                  checked={categoryQuery === category}
+                  onClick={() =>
+                    setCategoryQuery((prev) =>
+                      prev === category ? "" : category
+                    )
+                  }
+                  readOnly
+                />
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </label>
+            ))}
+          </div>
+        </div>
+      </form>
+
       <div className="results">
-        <ul className="results-grid">
-          {results.map((item) => (
-            <li key={item.id}>
-              <strong>{item.title}</strong>
-              <p>
-                <b>Brand:</b> {item.brand}
-              </p>
-              <p>
-                <b>Price:</b> ₹{item.price}
-              </p>
-              <p>
-                <b>Material:</b> {item.material}
-              </p>
-              <p>
-                <b>Color:</b> {item.color.join(", ")}
-              </p>
-            </li>
-          ))}
-        </ul>
+        {results.length > 0 ? (
+          <ul className="results-grid">
+            {results.map((item) => (
+              <li key={item.id}>
+                <strong>{item.id}</strong> — {item.title} (
+                Color: {item.color.join(", ")}, Material: {item.material},
+                Price: ₹{item.price}, Size: {item.size.join(", ")}, Star:{" "}
+                {item.star}, Category: {item.category})
+              </li>
+            ))}
+          </ul>
+        ) : (
+          (colorQuery ||
+            materialQuery ||
+            minPriceQuery ||
+            maxPriceQuery ||
+            sizeQuery ||
+            starQuery ||
+            categoryQuery) && <p>No items found matching your search</p>
+        )}
       </div>
     </div>
   );
