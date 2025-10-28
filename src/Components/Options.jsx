@@ -1,6 +1,7 @@
 // ✅ src/Options/Options.jsx
 import data from "../Data/data.jsx";
 
+
 const Options = {
   getColors: () => {
     const allColors = data.flatMap(item => item.color || []);
