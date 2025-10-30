@@ -1,3 +1,4 @@
+// ...existing code...
 import React, { useState, useEffect } from "react";
 import "./Search.css";
 import StarRating from "./StarRating.jsx";
@@ -7,10 +8,10 @@ import Options from "./Options.jsx";
 const SearchForm = () => {
   const [colorQuery, setColorQuery] = useState("");
   const [materialQuery, setMaterialQuery] = useState("");
-  const [minPriceQuery, setMinPriceQuery] = useState(100);
-  const [maxPriceQuery, setMaxPriceQuery] = useState(500);
+  const [minPriceQuery, setMinPriceQuery] = useState(20);
+  const [maxPriceQuery, setMaxPriceQuery] = useState(600);
   const [sizeQuery, setSizeQuery] = useState("");
-  const [starQuery, setStarQuery] = useState("");
+  const [ratingQuery, setRatingQuery] = useState(""); // keep empty string when no filter
   const [categoryQuery, setCategoryQuery] = useState("");
   const [results, setResults] = useState([]);
 
@@ -24,10 +25,11 @@ const SearchForm = () => {
         !materialQuery ||
         item.material.toLowerCase() === materialQuery.toLowerCase();
       const matchesPrice =
-        (!minPriceQuery || item.price >= Number.parseFloat(minPriceQuery)) &&
-        (!maxPriceQuery || item.price <= Number.parseFloat(maxPriceQuery));
+        (!minPriceQuery || item.price >= Number(minPriceQuery)) &&
+        (!maxPriceQuery || item.price <= Number(maxPriceQuery));
       const matchesSize = !sizeQuery || item.size.includes(sizeQuery);
-      const matchesStar = !starQuery || item.star >= parseFloat(starQuery);
+      const matchesRating =
+        ratingQuery === "" || item.rating >= Number(ratingQuery);
       const matchesCategory =
         !categoryQuery || item.category.includes(categoryQuery);
 
@@ -36,7 +38,7 @@ const SearchForm = () => {
         matchesMaterial &&
         matchesPrice &&
         matchesSize &&
-        matchesStar &&
+        matchesRating &&
         matchesCategory
       );
     });
@@ -54,7 +56,7 @@ const SearchForm = () => {
     minPriceQuery,
     maxPriceQuery,
     sizeQuery,
-    starQuery,
+    ratingQuery,
     categoryQuery,
   ]);
 
@@ -128,9 +130,7 @@ const SearchForm = () => {
                   value={material}
                   checked={materialQuery === material}
                   onClick={() =>
-                    setMaterialQuery((prev) =>
-                      prev === material ? "" : material
-                    )
+                    setMaterialQuery((prev) => (prev === material ? "" : material))
                   }
                   readOnly
                 />
@@ -140,41 +140,45 @@ const SearchForm = () => {
           </div>
         </div>
 
+        {/* Price Range */}
+        <div className="form-group price-slider">
+          <label>Price:</label>
+          <div className="price-values">
+            ₹{minPriceQuery} – ₹{maxPriceQuery}+
+          </div>
 
-        {/* ✅ Amazon-style Dual Slider */}
-<div className="form-group price-slider">
-  <label>Price:</label>
-  <div className="price-values">
-    ₹{minPriceQuery} – ₹{maxPriceQuery}+
-  </div>
-
-  <div className="slider-container">
-    <div className="slider-track"></div>
-    <input
-      type="range"
-      min="20"
-      max="600"
-      value={minPriceQuery}
-      onChange={(e) => {
-        const val = Number(e.target.value);
-        if (val <= maxPriceQuery - 10) setMinPriceQuery(val);
-      }}
-      className="range-min"
-    />
-    <input
-      type="range"
-      min="20"
-      max="600"
-      value={maxPriceQuery}
-      onChange={(e) => {
-        const val = Number(e.target.value);
-        if (val >= minPriceQuery) setMaxPriceQuery(val);
-      }}
-      className="range-max"
-    />
-  </div>
-</div>
-
+          <div
+            className="slider-container"
+            style={{
+              "--min": minPriceQuery,
+              "--max": maxPriceQuery,
+            }}
+          >
+            <div className="slider-track" />
+            <input
+              type="range"
+              min={min}
+              max={max}
+              value={minPriceQuery}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                if (val <= maxPriceQuery - 10) setMinPriceQuery(val);
+              }}
+              className="range-min"
+            />
+            <input
+              type="range"
+              min={min}
+              max={max}
+              value={maxPriceQuery}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                if (val >= minPriceQuery + 10) setMaxPriceQuery(val);
+              }}
+              className="range-max"
+            />
+          </div>
+        </div>
 
         {/* Size */}
         <div className="form-group">
@@ -187,9 +191,7 @@ const SearchForm = () => {
                   name="size"
                   value={size}
                   checked={sizeQuery === size}
-                  onClick={() =>
-                    setSizeQuery((prev) => (prev === size ? "" : size))
-                  }
+                  onClick={() => setSizeQuery((prev) => (prev === size ? "" : size))}
                   readOnly
                 />
                 {size}
@@ -200,10 +202,13 @@ const SearchForm = () => {
 
         {/* Rating */}
         <div className="form-group">
-          <label htmlFor="star">Customer Reviews</label>
+          <label htmlFor="Rating">Customer Reviews</label>
           <StarRating
-            value={Number(starQuery) || 0}
-            onChange={(v) => setStarQuery(v)}
+            value={Number(ratingQuery) || 0}
+            onChange={(v) => {
+              // store numeric rating; empty string means "no filter"
+              setRatingQuery(v === 0 ? "" : v);
+            }}
             size={28}
           />
         </div>
@@ -220,9 +225,7 @@ const SearchForm = () => {
                   value={category}
                   checked={categoryQuery === category}
                   onClick={() =>
-                    setCategoryQuery((prev) =>
-                      prev === category ? "" : category
-                    )
+                    setCategoryQuery((prev) => (prev === category ? "" : category))
                   }
                   readOnly
                 />
@@ -241,8 +244,8 @@ const SearchForm = () => {
               <li key={item.id}>
                 <strong>{item.id}</strong> — {item.title} (
                 Color: {item.color.join(", ")}, Material: {item.material},
-                Price: ₹{item.price}, Size: {item.size.join(", ")}, Star:{" "}
-                {item.star}, Category: {item.category})
+                Price: ₹{item.price}, Size: {item.size.join(", ")}, Rating:{" "}
+                {item.rating}, Category: {Array.isArray(item.category) ? item.category.join(", ") : item.category})
               </li>
             ))}
           </ul>
@@ -250,7 +253,7 @@ const SearchForm = () => {
           (colorQuery ||
             materialQuery ||
             sizeQuery ||
-            starQuery ||
+            ratingQuery ||
             categoryQuery) && <p>No items found matching your search</p>
         )}
       </div>

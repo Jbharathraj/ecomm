@@ -1,4 +1,3 @@
-// ✅ src/Options/Options.jsx
 import data from "../Data/data.jsx";
 
 
@@ -14,8 +13,8 @@ const Options = {
   },
 
   getCategory: () => {
-    const allColors = data.flatMap(item => item.category || []);
-    return [...new Set(allColors.map(c => c.trim()))];
+    const allCategories = data.flatMap(item => item.category || []);
+    return [...new Set(allCategories.map(c => c.trim()))];
   },
 
   getSize: () => {
