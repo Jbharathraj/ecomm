@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
@@ -31,7 +30,7 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
           key={i}
           onClick={() => handleClick(i)}
           style={{
-            color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#ccc",
+            color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#aba9a9ff",
             cursor: "pointer",
             fontSize: size,
             position: "relative",
@@ -53,7 +52,7 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
               >
                 ★
               </span>
-              <span style={{ color: "#ccc" }}>★</span>
+              <span style={{ color: "#f7f5f5ff" }}>★</span>
             </>
           ) : (
             "★"
