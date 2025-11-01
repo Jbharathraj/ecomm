@@ -1,0 +1,107 @@
+
+.price-slider {
+  margin: 20px 0;
+}
+
+.price-slider label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.price-values {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Slider Container */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.slider-track {
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  background: #d0d7de;
+  border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slider-range {
+  position: absolute;
+  height: 6px;
+  background: #1e64b5;
+  border-radius: 5px;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(((var(--min, 20) - 20) / (600 - 20) * 100%) + 13px);
+  right: calc(100% - ((var(--max, 600) - 20) / (600 - 20) * 100%) + 11px);
+}
+
+.range-input {
+  position: absolute;
+  width: 100%;
+  height: 28px;
+  top: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 3;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #1e64b5;
+  border: 4px solid #fff;
+  box-shadow: 0 0 6px rgba(30, 100, 181, 0.4);
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(30, 100, 181, 0.6);
+}
+
+.range-input::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.range-input::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #1e64b5;
+  border: 4px solid #fff;
+  box-shadow: 0 0 6px rgba(30, 100, 181, 0.4);
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.15s ease;
+}
+
+.range-input::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(30, 100, 181, 0.6);
+}
+
+.range-input::-moz-range-track {
+  background: transparent;
+}
+
+.slider-range {
+  transition: left 0.15s ease, right 0.15s ease;
+}

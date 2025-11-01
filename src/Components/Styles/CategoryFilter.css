@@ -1,0 +1,38 @@
+.category-radio-group {
+  display: flex;
+  flex-direction: column; /* ✅ stack each option vertically */
+  align-items: flex-start;
+  gap: 8px; /* ✅ consistent spacing between each option */
+  margin-top: 8px;
+}
+
+.category-radio-group div {
+  display: flex;
+  align-items: flex-start; /* ✅ aligns radio button with top of text */
+  gap: 8px; /* ✅ space between radio and text */
+}
+
+.category-radio-group input[type="radio"] {
+  accent-color: #1e64a5;
+  width: 18px; /* ✅ consistent with other filters */
+  height: 18px;
+  margin-top: 3px; /* ✅ slight offset for better alignment */
+  cursor: pointer;
+}
+
+.category-radio-group label {
+  font-size: 16px; /* ✅ same font size as other filters */
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+  line-height: 1.4; /* ✅ makes multi-line labels look balanced */
+}
+
+.category-radio-group label:hover {
+  color: #1e64a5;
+}
+
+.category-radio-group input[type="radio"]:checked + label {
+  color: #1e64a5;
+  font-weight: 600;
+}
