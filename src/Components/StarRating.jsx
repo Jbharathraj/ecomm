@@ -30,7 +30,11 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
           key={i}
           onClick={() => handleClick(i)}
           style={{
+<<<<<<< HEAD
             color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#aba9a9ff",
+=======
+            color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#ccc",
+>>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
             cursor: "pointer",
             fontSize: size,
             position: "relative",
@@ -52,7 +56,11 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
               >
                 ★
               </span>
+<<<<<<< HEAD
               <span style={{ color: "#f7f5f5ff" }}>★</span>
+=======
+              <span style={{ color: "#ccc" }}>★</span>
+>>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
             </>
           ) : (
             "★"
@@ -80,4 +88,8 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
   );
 };
 
+<<<<<<< HEAD
 export default StarRating;
+=======
+export default StarRating;
+>>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
