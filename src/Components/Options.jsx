@@ -26,8 +26,4 @@ const Options = {
   },
 };
 
-<<<<<<< HEAD
 export default Options;
-=======
-export default Options;
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2

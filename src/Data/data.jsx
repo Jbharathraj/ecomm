@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 // import React from 'react';
 // import WD001 from '../Assets/Images/WD001.jpg';
 
 
-=======
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
 const data =
 [
   {
     "id": "WD001",
-<<<<<<< HEAD
     // "image": WD001,
-=======
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "title": "Silk Top",
     "rating": 3.5,
     "price": 228,
@@ -59,11 +54,8 @@ const data =
       "daily wear"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -113,11 +105,8 @@ const data =
     ],
     "category": [
       "Lehenga Choli",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -144,11 +133,8 @@ const data =
     ],
     "category": [
       "Work-appropriate Tops",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -174,11 +160,8 @@ const data =
     ],
     "category": [
       "t-shirts",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -224,11 +207,8 @@ const data =
       "party"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -281,11 +261,8 @@ const data =
       "fitted"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "Lehenga Choli"
     ]
   },
@@ -309,11 +286,8 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -343,11 +317,8 @@ const data =
   },
   {
     "id": "WD013",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Lehenga",
-=======
-    "title": "Casual Lehenga",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.5,
     "price": 185,
     "brand": "CozyClothes",
@@ -371,11 +342,8 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -505,11 +473,8 @@ const data =
     ],
     "category": [
       "Lehenga Choli",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -537,11 +502,8 @@ const data =
     ],
     "category": [
       "Bodycon / Fitted Dresses",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -621,20 +583,15 @@ const data =
     ],
     "category": [
       "blazers & suits",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD023",
-<<<<<<< HEAD
+
     "title": "Casual  Pant and Shirts Dress",
-=======
-    "title": "Casual Dress",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.5,
     "price": 266,
     "brand": "CozyClothes",
@@ -652,11 +609,8 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -683,11 +637,8 @@ const data =
     ],
     "category": [
       "Cocktail Dresses",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -790,11 +741,8 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -816,11 +764,8 @@ const data =
     ],
     "category": [
       "skirts",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -874,11 +819,8 @@ const data =
       "fitted"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
-=======
-      "tunics",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "Cocktail Dresses"
     ]
   },
@@ -1057,11 +999,8 @@ const data =
   },
   {
     "id": "WD039",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Blazer",
-=======
-    "title": "Casual Blazer",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 303,
     "brand": "ElegantStyle",
@@ -1207,11 +1146,8 @@ const data =
     ],
     "category": [
       "Bodycon / Fitted Dresses",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1238,11 +1174,8 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1318,11 +1251,8 @@ const data =
       "comfortable"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
-=======
-      "Salwar Kameez / Churidar",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "skirts"
     ]
   },
@@ -1347,11 +1277,8 @@ const data =
       "wedding"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1399,13 +1326,9 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
       "Salwar / Churidar"
-=======
-      "tunics",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1451,11 +1374,8 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1505,11 +1425,8 @@ const data =
       "work"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1536,11 +1453,8 @@ const data =
       "wedding"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
-=======
-      "Salwar Kameez / Churidar",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "blazers & suits"
     ]
   },
@@ -1623,11 +1537,8 @@ const data =
     ],
     "category": [
       "Cocktail Dresses",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1650,11 +1561,8 @@ const data =
     ],
     "category": [
       "blazers & suits",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1683,11 +1591,9 @@ const data =
   },
   {
     "id": "WD062",
-<<<<<<< HEAD
+
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 165,
     "brand": "DailyWear",
@@ -1706,11 +1612,8 @@ const data =
       "party"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1782,11 +1685,8 @@ const data =
       "fitted"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
-=======
-      "tunics",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "blazers & suits"
     ]
   },
@@ -1835,13 +1735,9 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
       "Tunics Dresses"
-=======
-      "casual",
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1866,11 +1762,8 @@ const data =
     ],
     "category": [
       "Lehenga Choli",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -1894,11 +1787,8 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "Gowns / Maxi Dresses"
     ]
   },
@@ -1975,11 +1865,8 @@ const data =
       "party"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "Sarees & Saree Gowns"
     ]
   },
@@ -2184,13 +2071,9 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
       "Tunics Dresses"
-=======
-      "casual",
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2268,11 +2151,8 @@ const data =
   },
   {
     "id": "WD084",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 3.0,
     "price": 290,
     "brand": "WinterStyle",
@@ -2368,11 +2248,8 @@ const data =
   },
   {
     "id": "WD088",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 470,
     "brand": "WinterStyle",
@@ -2417,11 +2294,8 @@ const data =
     ],
     "category": [
       "blazers & suits",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2475,11 +2349,8 @@ const data =
     ],
     "category": [
       "Cocktail Dresses",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2532,11 +2403,8 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2760,11 +2628,8 @@ const data =
     ],
     "category": [
       "Work-appropriate Tops",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2790,11 +2655,8 @@ const data =
     ],
     "category": [
       "Bodycon / Fitted Dresses",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2865,11 +2727,8 @@ const data =
     ],
     "category": [
       "Gowns / Maxi Dresses",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -2941,13 +2800,9 @@ const data =
       "party"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
       "Casual  Pant and Shirts"
-=======
-      "Salwar Kameez / Churidar",
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3050,22 +2905,16 @@ const data =
       "winter"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
       "Salwar / Churidar"
-=======
-      "casual",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD114",
-<<<<<<< HEAD
+
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 16,
     "brand": "FemmeStyle",
@@ -3109,13 +2958,9 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
       "Salwar / Churidar"
-=======
-      "casual",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3211,11 +3056,8 @@ const data =
       "wedding"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3485,11 +3327,8 @@ const data =
       "comfortable"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "Bodycon / Fitted Dresses"
     ]
   },
@@ -3694,20 +3533,14 @@ const data =
       "party"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD139",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Choli",
-=======
-    "title": "Casual Choli",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 183,
     "brand": "DesiChic",
@@ -3728,11 +3561,8 @@ const data =
       "daily wear"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3783,11 +3613,8 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3812,11 +3639,8 @@ const data =
       "office"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
-=======
-      "tunics",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "t-shirts"
     ]
   },
@@ -3839,11 +3663,8 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "skirts"
     ]
   },
@@ -3868,11 +3689,8 @@ const data =
       "office"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -3899,20 +3717,14 @@ const data =
     ],
     "category": [
       "Sarees & Saree Gowns",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD146",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 3.5,
     "price": 106,
     "brand": "Traditionelle",
@@ -4103,11 +3915,8 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
-=======
-      "tunics",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "skirts"
     ]
   },
@@ -4203,11 +4012,8 @@ const data =
       "ethnic"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4254,11 +4060,8 @@ const data =
       "work"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4287,11 +4090,8 @@ const data =
   },
   {
     "id": "WD161",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts T-Shirt",
-=======
-    "title": "Casual T-Shirt",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 3.5,
     "price": 409,
     "brand": "UrbanChic",
@@ -4334,11 +4134,8 @@ const data =
     ],
     "category": [
       "Cocktail Dresses",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4418,11 +4215,8 @@ const data =
       "fitted"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4527,11 +4321,9 @@ const data =
   },
   {
     "id": "WD170",
-<<<<<<< HEAD
+
     "title": "Casual  Pant and Shirts Saree",
-=======
-    "title": "Casual Saree",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 3.5,
     "price": 162,
     "brand": "WinterStyle",
@@ -4551,13 +4343,9 @@ const data =
       "office"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
       "Salwar / Churidar"
-=======
-      "casual",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4630,11 +4418,8 @@ const data =
       "ethnic"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
-=======
-      "Salwar Kameez / Churidar",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "t-shirts"
     ]
   },
@@ -4708,11 +4493,8 @@ const data =
       "winter"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4785,11 +4567,8 @@ const data =
     ],
     "category": [
       "Lehenga Choli",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4816,11 +4595,8 @@ const data =
     ],
     "category": [
       "Bodycon / Fitted Dresses",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4870,20 +4646,14 @@ const data =
     ],
     "category": [
       "blazers & suits",
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD183",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Lehenga",
-=======
-    "title": "Casual Lehenga",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 1.0,
     "price": 388,
     "brand": "GlamHer",
@@ -4905,11 +4675,8 @@ const data =
     ],
     "category": [
       "Bodycon / Fitted Dresses",
-<<<<<<< HEAD
       "Tunics Dresses"
-=======
-      "tunics"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4935,13 +4702,9 @@ const data =
       "luxury"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
       "Salwar / Churidar"
-=======
-      "tunics",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -4967,11 +4730,8 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
-=======
-      "Salwar Kameez / Churidar",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "t-shirts"
     ]
   },
@@ -4997,22 +4757,15 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
       "Salwar / Churidar"
-=======
-      "tunics",
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
     "id": "WD187",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts Tunic",
-=======
-    "title": "Casual Tunic",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 1.5,
     "price": 111,
     "brand": "DailyWear",
@@ -5136,11 +4889,8 @@ const data =
       "summer"
     ],
     "category": [
-<<<<<<< HEAD
       "Tunics Dresses",
-=======
-      "tunics",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "blazers & suits"
     ]
   },
@@ -5194,11 +4944,8 @@ const data =
     ],
     "category": [
       "Work-appropriate Tops",
-<<<<<<< HEAD
       "Casual  Pant and Shirts"
-=======
-      "casual"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     ]
   },
   {
@@ -5243,11 +4990,8 @@ const data =
       "evening"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
       "blazers & suits"
     ]
   },
@@ -5295,11 +5039,7 @@ const data =
       "festival"
     ],
     "category": [
-<<<<<<< HEAD
       "Casual  Pant and Shirts",
-=======
-      "casual",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
       "Lehenga Choli"
     ]
   },
@@ -5327,11 +5067,7 @@ const data =
       "best seller"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar",
-=======
-      "Salwar Kameez / Churidar",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
       "blazers & suits"
     ]
   },
@@ -5355,20 +5091,13 @@ const data =
       "luxury"
     ],
     "category": [
-<<<<<<< HEAD
       "Salwar / Churidar"
-=======
-      "Salwar Kameez / Churidar"
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
     ]
   },
   {
     "id": "WD200",
-<<<<<<< HEAD
     "title": "Casual  Pant and Shirts T-Shirt",
-=======
-    "title": "Casual T-Shirt",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
     "rating": 4.0,
     "price": 262,
     "brand": "FemmeStyle",

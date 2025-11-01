@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// ...existing code...
 const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
 
@@ -19,26 +20,36 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
     }
   };
 
+  const handleKeyDown = (e, val) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleClick(val);
+    }
+  };
+
   const renderStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       const isFull = selectedValue >= i;
-      const isHalf = !isFull && selectedValue >= i - 0.5;
+      const isHalf = !isFull && selectedValue >= i - 0.5 && selectedValue < i;
 
       stars.push(
         <span
           key={i}
           onClick={() => handleClick(i)}
+          onKeyDown={(e) => handleKeyDown(e, i)}
+          tabIndex={0}
+          role="button"
+          aria-label={`${i} star`}
           style={{
-<<<<<<< HEAD
-            color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#aba9a9ff",
-=======
             color: isFull ? "#f6a700" : isHalf ? "#f6a700" : "#ccc",
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
             cursor: "pointer",
             fontSize: size,
             position: "relative",
             lineHeight: 1,
+            display: "inline-block",
+            width: size,
+            textAlign: "center",
           }}
         >
           {isHalf ? (
@@ -56,11 +67,8 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
               >
                 ★
               </span>
-<<<<<<< HEAD
-              <span style={{ color: "#f7f5f5ff" }}>★</span>
-=======
-              <span style={{ color: "#ccc" }}>★</span>
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+
+              <span style={{ color: "#f7f5f5" }}>★</span>
             </>
           ) : (
             "★"
@@ -88,8 +96,5 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
   );
 };
 
-<<<<<<< HEAD
 export default StarRating;
-=======
-export default StarRating;
->>>>>>> 16cf4581febc86d763238e00c7d0735c93789ba2
+// ...existing code...
