@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-// ...existing code...
-const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
+
+const StarRating = ({ 
+  value = 0, 
+  onChange = () => {}, 
+  size = 26,
+  showLabel = true,
+  showText = true 
+}) => {
   const [selectedValue, setSelectedValue] = useState(value);
 
-  // Keep internal state synced with prop
   useEffect(() => {
-    console.log("StarRating value:", value); // Debugging
     setSelectedValue(value);
   }, [value]);
 
@@ -67,7 +71,6 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
               >
                 ★
               </span>
-
               <span style={{ color: "#f7f5f5" }}>★</span>
             </>
           ) : (
@@ -89,12 +92,13 @@ const StarRating = ({ value = 0, onChange = () => {}, size = 26 }) => {
       }}
     >
       <div style={{ display: "flex", gap: "2px" }}>{renderStars()}</div>
-      <span style={{ fontSize: "14px", color: "#444", fontWeight: "500" }}>
-        up to
-      </span>
+      {showLabel && showText && (
+        <span style={{ fontSize: "14px", color: "#444", fontWeight: "500" }}>
+          up to
+        </span>
+      )}
     </div>
   );
 };
 
 export default StarRating;
-// ...existing code...

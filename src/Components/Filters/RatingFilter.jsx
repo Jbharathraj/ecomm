@@ -9,6 +9,8 @@ const RatingFilter = ({ ratingQuery, setRatingQuery }) => {
         value={Number(ratingQuery) || 0}
         onChange={(v) => setRatingQuery(v.toString())}
         size={28}
+        showLabel={true}
+        showText={true}
       />
     </div>
   );

@@ -1,12 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import SearchForm from './Components/SearchForm';
+// import logo from './logo.svg';
+// import './App.css';
+// import SearchForm from './Components/SearchForm';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <SearchForm />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import SearchForm from "./Components/SearchForm";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
 
 function App() {
   return (
-    <div className="App">
-      <SearchForm />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<SearchForm />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

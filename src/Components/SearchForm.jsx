@@ -1,4 +1,3 @@
-// ...existing code...
 import React, { useState, useEffect } from "react";
 import "./Styles/Search.css";
 import data from "../Data/data.jsx";
@@ -9,11 +8,11 @@ import SizeFilter from "./Filters/SizeFilter.jsx";
 import RatingFilter from "./Filters/RatingFilter.jsx";
 import CategoryFilter from "./Filters/CategoryFilter.jsx";
 import PriceFilter from "./Filters/PriceFilter.jsx";
-import StarRating from "./StarRating.jsx";
+import ResultsGrid from "./ResultsGrid/ResultsGrid.jsx";
 
 const SearchForm = () => {
   const [colorQuery, setColorQuery] = useState("");
-  const [materialQuery, setMaterialQuery] = useState("");
+  const [materialQuery, setMaterialQuery] = useState([]);
   const [minPriceQuery, setMinPriceQuery] = useState(20);
   const [maxPriceQuery, setMaxPriceQuery] = useState(600);
   const [sizeQuery, setSizeQuery] = useState("");
@@ -45,9 +44,19 @@ const SearchForm = () => {
           item.color.some((c) => c.toLowerCase() === colorQuery.toLowerCase()));
 
       const matchesMaterial =
-        !materialQuery ||
+        materialQuery.length === 0 ||
         (item.material &&
-          item.material.toLowerCase() === materialQuery.toLowerCase());
+          (
+            Array.isArray(item.material)
+              ? item.material.some((m) =>
+                materialQuery
+                  .map((mat) => mat.toLowerCase())
+                  .includes(m.toString().toLowerCase())
+              )
+              : materialQuery
+                .map((mat) => mat.toLowerCase())
+                .includes(item.material.toString().toLowerCase())
+          ));
 
       const matchesPrice =
         (!minPriceQuery || item.price >= Number(minPriceQuery)) &&
@@ -66,9 +75,9 @@ const SearchForm = () => {
         (typeof item.category === "string"
           ? item.category.toLowerCase().includes(categoryQuery.toLowerCase())
           : Array.isArray(item.category) &&
-            item.category.some((c) =>
-              c.toLowerCase().includes(categoryQuery.toLowerCase())
-            ));
+          item.category.some((c) =>
+            c.toLowerCase().includes(categoryQuery.toLowerCase())
+          ));
 
       return (
         matchesColor &&
@@ -86,7 +95,6 @@ const SearchForm = () => {
   // auto run search when filters change
   useEffect(() => {
     handleSearch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     colorQuery,
     materialQuery,
@@ -132,34 +140,17 @@ const SearchForm = () => {
       {/* Results */}
       <div className="results">
         {results.length > 0 ? (
-          <ul className="results-grid">
-            {results.map((item) => (
-              <li key={item.id} className="result-card">
-                <div className="card-header">
-                  <strong className="item-title">{item.title}</strong>
-                  <span className="item-price">₹{item.price}</span>
-                </div>
-
-                <div className="item-meta">
-                  <span className="item-id">ID: {item.id}</span>
-                  <span>• Color: {Array.isArray(item.color) ? item.color.join(", ") : item.color}</span>
-                </div>
-
-                <div className="item-meta">
-                  <span>Material: {item.material}</span>
-                  <span>• Size: {Array.isArray(item.size) ? item.size.join(", ") : item.size}</span>
-                  <span>• Rating: {item.rating}</span>
-                  <span>• Category: {Array.isArray(item.category) ? item.category.join(", ") : item.category}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <ResultsGrid results={results} />
         ) : (
           (colorQuery ||
             materialQuery ||
             sizeQuery ||
             ratingQuery ||
-            categoryQuery) && <p className="no-results">No items found matching your search</p>
+            categoryQuery ||
+            minPriceQuery !== 20 ||
+            maxPriceQuery !== 600) && (
+            <p className="no-results">No items found matching your search</p>
+          )
         )}
       </div>
     </div>
