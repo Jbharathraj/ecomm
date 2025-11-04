@@ -2,8 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
   gap: 6px;
+
+  /* Keep inside the grid area */
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
 .page-btn {
@@ -13,11 +17,12 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.1s;
 }
 
 .page-btn:hover {
   background-color: #e0e0e0;
+  transform: scale(1.05);
 }
 
 .page-btn.active {

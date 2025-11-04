@@ -6,7 +6,7 @@ const StarRating = ({
   onChange = () => {}, 
   size = 26,
   showLabel = true,
-  showText = true 
+  showText = false 
 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
 

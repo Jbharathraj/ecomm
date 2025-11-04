@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import StarRating from "../StarRating.jsx";
 import "./ProductDetails.css";
 
-// ✅ Dynamic image loader function (supports PNG + JPG)
+//  Dynamic image loader function (supports PNG + JPG)
 function getProductImage(productId, productTitle, color) {
   try {
     const images = require.context("../Assets", false, /\.(png|jpe?g)$/);
@@ -23,7 +23,7 @@ function getProductImage(productId, productTitle, color) {
     if (images.keys().includes(pngFileByTitle)) return images(pngFileByTitle);
     if (images.keys().includes(jpgFileByTitle)) return images(jpgFileByTitle);
 
-    console.warn("⚠️ Image not found:", productId || productTitle, color);
+    console.warn(" Image not found:", productId || productTitle, color);
     return null;
   } catch (error) {
     console.warn("Error loading image:", error);
@@ -75,7 +75,7 @@ const ProductDetails = () => {
     ? getProductImage(product.id, product.title, selectedColor)
     : null;
 
-  console.log("🖼️ Product Image Check →", product.id, product.title, selectedColor, imageSrc);
+  console.log(" Product Image Check →", product.id, product.title, selectedColor, imageSrc);
 
   return (
     <div className="product-details-page">
@@ -84,7 +84,7 @@ const ProductDetails = () => {
       </button>
 
       <div className="product-details-container">
-        {/* 🖼️ LEFT: Product Image */}
+        {/*  LEFT: Product Image */}
         <div className="product-image-box">
           {imageSrc ? (
             <img
@@ -97,7 +97,7 @@ const ProductDetails = () => {
           )}
         </div>
 
-        {/* 📄 RIGHT: Product Info */}
+        {/*  RIGHT: Product Info */}
         <div className="product-info-box">
           <h2 className="product-title">{product.title}</h2>
 
@@ -125,7 +125,7 @@ const ProductDetails = () => {
             </p>
           </div>
 
-          {/* 🎨 Color Options */}
+          {/*  Color Options */}
           <div className="filter-section">
             <h4>Select Color:</h4>
             <div className="color-options">
@@ -152,7 +152,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {/* 📏 Size Options */}
+          {/*  Size Options */}
           <div className="filter-section">
             <h4>Select Size:</h4>
             <div className="size-options">

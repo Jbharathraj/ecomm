@@ -1,0 +1,115 @@
+/* 🔹 List container */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px; 
+  margin-top: 16px;
+  max-width: 800px; 
+  margin: 0 auto;
+  background: #f8f8f8;
+}
+
+/* 🔹 List card box */
+.list-card {
+  width: 70%; 
+  background: #fff;
+  border-radius: 10px; 
+  box-shadow: none;
+  padding: 20px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-bottom: 1px solid #e7e7e7; 
+}
+
+.list-card:hover {
+  transform: none; /* removed lift effect */
+  background: #f8f8f8; /* subtle hover effect */
+}
+
+/* 🔹 List content */
+.list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0F1111;
+  text-decoration: none;
+}
+
+.product-name:hover {
+  color: #C7511F;
+}
+
+.product-price {
+  font-size: 22px;
+  font-weight: 400;
+  color: #B12704; /* Amazon's price color */
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.product-sub {
+  font-size: 14px;
+  color: #565959;
+  line-height: 20px;
+}
+
+.card-actions {
+  margin-top: 12px;
+}
+
+.btn.btn-ghost {
+  background: #f5f5f3; 
+  border: 1px solid #393837;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #0F1111;
+  font-weight: 500;
+}
+
+.btn.btn-ghost:hover {
+  background: #cdb858;
+}
+
+/* 🔹 Dropdown Container */
+.view-toggle-container {
+  display: flex;
+  justify-content: flex-end; /* aligns to right side */
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 0 20px 0 0; /* ✅ Removed left padding */
+  background: #fff;
+  border-bottom: 1px solid #e7e7e7;
+  width: 100%;
+}
+
+/* 🔹 Dropdown Select */
+.view-select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #D5D9D9;
+  font-size: 14px;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.2s ease;
+}
+
+.view-select:hover {
+  border-color: #888;
+}

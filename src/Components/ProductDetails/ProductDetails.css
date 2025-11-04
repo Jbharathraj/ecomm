@@ -11,7 +11,7 @@
   font-family: "Amazon Ember", Arial, sans-serif;
 }
 
-/* 🔙 Back Button */
+/*  Back Button */
 .btn-back {
   align-self: flex-start;
   background: #ffd814;
@@ -35,7 +35,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 24px; /* 🔽 Reduced from 40px */
+  gap: 24px; 
   width: 100%;
 }
 
@@ -46,10 +46,10 @@
   align-items: center;
   justify-content: center;
   background: #fff;
-  border-radius: 16px; /* ✅ Rounded box */
+  border-radius: 16px; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  min-height: 320px; /* 🔽 Reduced height */
-  max-width: 360px; /* 🔽 Slightly reduced width */
+  min-height: 320px; 
+  max-width: 360px; 
   overflow: hidden;
 }
 
@@ -58,7 +58,7 @@
   height: auto;
   border-radius: 16px;
   object-fit: contain;
-  padding: 10px; /* 🔽 Reduced padding */
+  padding: 10px; 
 }
 
 .image-placeholder {
@@ -73,14 +73,14 @@
   flex: 1.3;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* 🔽 Reduced from 12px */
+  gap: 8px; 
 }
 
 .product-title {
   font-size: 24px;
   font-weight: 700;
   color: #111;
-  margin-bottom: 4px; /* 🔽 Reduced from 8px */
+  margin-bottom: 4px; 
 }
 
 /* === Centered Price + Rating === */
@@ -88,7 +88,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 6px; /* 🔽 Reduced from 12px */
+  margin-bottom: 6px; 
 }
 
 .product-price {
@@ -102,7 +102,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: 2px; /* 🔽 Reduced from 4px */
+  margin-top: 2px; 
 }
 
 .rating-value {
@@ -119,25 +119,25 @@
 }
 
 .product-info p {
-  margin: 2px 0; /* 🔽 Reduced from 4px */
+  margin: 2px 0; 
 }
 
 /* === Filter Section === */
 .filter-section {
-  margin-top: 8px; /* 🔽 Reduced from 14px */
+  margin-top: 8px; 
 }
 
 .filter-section h4 {
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 4px; /* 🔽 Reduced from 6px */
+  margin-bottom: 4px; 
   color: #0e0c0c;
 }
 
 /* === Color Options === */
 .color-options {
   display: flex;
-  gap: 8px; /* 🔽 Reduced gap */
+  gap: 8px; 
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -164,13 +164,13 @@
 .size-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* 🔽 Reduced from 10px */
+  gap: 8px; 
   justify-content: center;
   align-items: center;
 }
 
 .size-btn {
-  padding: 7px 12px; /* 🔽 Reduced padding */
+  padding: 7px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background: #fff;

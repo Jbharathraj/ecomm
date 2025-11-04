@@ -18,6 +18,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SearchForm from "./Components/SearchForm";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import ResultsPage from "./Components/ResultsPage/ResultsPage.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SearchForm />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/" element={<ResultsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
