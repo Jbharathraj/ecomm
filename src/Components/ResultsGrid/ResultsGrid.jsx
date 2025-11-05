@@ -72,11 +72,19 @@ const ResultsGrid = ({ results }) => {
           .map((imgKey) => productImages[imgKey]);
       }
 
-      // Pick a random image from availableImages
-      map[item.id] =
-        availableImages.length > 0
-          ? availableImages[Math.floor(Math.random() * availableImages.length)]
-          : "/fallback.png";
+const key = filterColor ? `${item.id}-${filterColor}` : `${item.id}`;
+
+     const colorImage = availableImages.find(img =>
+  img.includes(key)
+);
+
+// If found, use it; otherwise pick a random one; fallback if none
+map[item.id] = colorImage
+  ? colorImage
+  : availableImages.length > 0
+    ? availableImages[Math.floor(Math.random() * availableImages.length)]
+    : "/fallback.png";
+      
     });
 
     return map;

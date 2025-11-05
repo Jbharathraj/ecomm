@@ -249,6 +249,11 @@ const ProductDetails = () => {
       .map((imgKey) => productImages[imgKey]);
 
     if (availableImages.length > 0) {
+      const key = `${product.id}-${color}`;
+      const productImage = availableImages.find(img =>
+          img.includes(key)
+      );
+      if (productImage) return productImage;
       return availableImages[Math.floor(Math.random() * availableImages.length)];
     }
 
