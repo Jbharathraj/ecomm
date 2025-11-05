@@ -1,11 +1,57 @@
 // src/Components/ResultsList.jsx
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useMemo } from "react";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import StarRating from "../StarRating.jsx";
+import productImages from "../ProductImage/ProductImage";
 import "./ResultsList.css";
 
 const ResultsList = ({ items }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams(location.search);
+
+  const filterColor = searchParams.get("color")?.toLowerCase();
+
+  // Memoize image selection per product
+  const memoizedImages = useMemo(() => {
+    const map = {};
+    if (!items) return map;
+
+    items.forEach((item) => {
+      if (!item.color || item.color.length === 0) {
+        map[item.id] = "/fallback.png";
+        return;
+      }
+
+      const colors = Array.isArray(item.color) ? item.color : [item.color];
+
+      let availableImages = [];
+
+      if (filterColor) {
+        // 1️⃣ If a color filter is applied, select images matching filter
+        availableImages = Object.keys(productImages)
+          .filter((imgKey) => imgKey.toLowerCase().includes(filterColor))
+          .map((imgKey) => productImages[imgKey]);
+      }
+
+      // 2️⃣ If no filter or no image for filter color, pick images from product colors
+      if (availableImages.length === 0) {
+        availableImages = Object.keys(productImages)
+          .filter((imgKey) =>
+            colors.some((c) => imgKey.toLowerCase().includes(c.toLowerCase()))
+          )
+          .map((imgKey) => productImages[imgKey]);
+      }
+
+      // 3️⃣ Pick a random image from availableImages
+      map[item.id] =
+        availableImages.length > 0
+          ? availableImages[Math.floor(Math.random() * availableImages.length)]
+          : "/fallback.png";
+    });
+
+    return map;
+  }, [items, filterColor]);
 
   const handleViewDetails = (item) => {
     navigate(`/product/${item.id}`, { state: { product: item } });
@@ -14,7 +60,17 @@ const ResultsList = ({ items }) => {
   return (
     <div className="results-list">
       {items.map((item) => (
-        <div key={item.id} className="list-card" role="article">
+        <div
+          key={item.id}
+          className="list-card"
+          role="article"
+          onClick={() => handleViewDetails(item)}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="list-card-image">
+            <img src={memoizedImages[item.id]} alt={item.title} />
+          </div>
+
           <div className="list-content">
             <h3 className="product-name">{item.title}</h3>
             <div className="product-price">₹{item.price}</div>
@@ -31,19 +87,26 @@ const ResultsList = ({ items }) => {
             </div>
 
             <div className="product-sub">
-              <div>Colors: {Array.isArray(item.color) ? item.color.join(", ") : item.color}</div>
-              <div>Materials: {Array.isArray(item.material) ? item.material.join(", ") : item.material}</div>
-              <div>Sizes: {Array.isArray(item.size) ? item.size.join(", ") : item.size}</div>
-              <div>Category: {Array.isArray(item.category) ? item.category.join(", ") : item.category}</div>
-            </div>
-
-            <div className="card-actions">
-              <button
-                className="btn btn-ghost"
-                onClick={() => handleViewDetails(item)}
-              >
-                View Details
-              </button>
+              <div>
+                Colors:{" "}
+                {Array.isArray(item.color) ? item.color.join(", ") : item.color}
+              </div>
+              <div>
+                Materials:{" "}
+                {Array.isArray(item.material)
+                  ? item.material.join(", ")
+                  : item.material}
+              </div>
+              <div>
+                Sizes:{" "}
+                {Array.isArray(item.size) ? item.size.join(", ") : item.size}
+              </div>
+              <div>
+                Category:{" "}
+                {Array.isArray(item.category)
+                  ? item.category.join(", ")
+                  : item.category}
+              </div>
             </div>
           </div>
         </div>

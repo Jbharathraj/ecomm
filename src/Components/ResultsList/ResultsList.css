@@ -1,35 +1,99 @@
-/* 🔹 List container */
+/*  Product Image */
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: transform 0.25s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.03);
+}
+
+/*  View Toggle Container (Right-aligned) */
+.view-toggle-buttons {
+  display: flex;
+  justify-content: flex-end; /*  Aligns buttons to right */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 10px 20px 10px 0;
+}
+
+/*  View Toggle Buttons */
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f5f5f5;
+  border: 1px solid #d5d9d9;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+  transition: all 0.25s ease-in-out;
+}
+
+.toggle-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.toggle-btn.active {
+  background-color: #555;
+  color: #fff;
+}
+
+.toggle-btn.active:hover {
+  background-color: #444;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+/*  List container */
 .results-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1px; 
+  gap: 16px; /*  Added spacing between cards */
   margin-top: 16px;
-  max-width: 800px; 
+  max-width: 800px;
   margin: 0 auto;
   background: #f8f8f8;
+  padding-bottom: 20px;
 }
 
-/* 🔹 List card box */
+/*  List card box */
 .list-card {
-  width: 70%; 
+  width: 85%; /* slightly wider for better alignment */
   background: #fff;
-  border-radius: 10px; 
+  border-radius: 10px;
   box-shadow: none;
   padding: 20px;
   transition: all 0.2s ease;
   display: flex;
   flex-direction: row;
   gap: 20px;
-  border-bottom: 1px solid #e7e7e7; 
+  border: 1px solid #e7e7e7;
 }
 
+/*  Hover highlight */
 .list-card:hover {
-  transform: none; /* removed lift effect */
-  background: #f8f8f8; /* subtle hover effect */
+  background: #fffef5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: #d1b34f;
 }
 
-/* 🔹 List content */
+/*  List content */
 .list-content {
   flex: 1;
   display: flex;
@@ -40,18 +104,18 @@
 .product-name {
   font-size: 18px;
   font-weight: 500;
-  color: #0F1111;
+  color: #0f1111;
   text-decoration: none;
 }
 
-.product-name:hover {
-  color: #C7511F;
-}
+/* .product-name:hover {
+  color: #c7511f;
+} */
 
 .product-price {
   font-size: 22px;
   font-weight: 400;
-  color: #B12704; /* Amazon's price color */
+  color: #b12704;
 }
 
 .product-rating {
@@ -71,14 +135,133 @@
   margin-top: 12px;
 }
 
+/*  Button */
 .btn.btn-ghost {
-  background: #f5f5f3; 
+  background: #f5f5f3;
   border: 1px solid #393837;
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease;
-  color: #0F1111;
+  color: #0f1111;
+  font-weight: 500;
+}
+
+/* .btn.btn-ghost:hover {
+  background: #cdb858;
+} */
+/* ==========================
+   Results List CSS
+   ========================== */
+
+/* List container */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; 
+  margin: 0 auto;
+  max-width: 800px;
+  padding-bottom: 20px;
+  background: #f8f8f8;
+}
+
+/* List card box */
+.list-card {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  gap: 20px;
+  width: 85%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #e7e7e7;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.list-card:hover {
+  background: #fffef5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: #d1b34f;
+}
+
+/* Image container */
+.list-card-image {
+  flex-shrink: 0; 
+  width: 250px;   
+  height: 250px;  
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.list-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps aspect ratio */
+  transition: transform 0.25s ease;
+}
+
+.list-card-image img:hover {
+  transform: scale(1.03);
+}
+
+/* Content section */
+.list-content {
+  flex: 1; /* takes remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0f1111;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: 500;
+  color: #b12704;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.rating-value {
+  font-size: 14px;
+  color: #565959;
+}
+
+.product-sub {
+  font-size: 14px;
+  color: #565959;
+  line-height: 20px;
+}
+
+/* Card actions (like buttons) */
+.card-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons inside card */
+.btn.btn-ghost {
+  background: #f5f5f3;
+  border: 1px solid #393837;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #0f1111;
   font-weight: 500;
 }
 
@@ -86,30 +269,20 @@
   background: #cdb858;
 }
 
-/* 🔹 Dropdown Container */
-.view-toggle-container {
-  display: flex;
-  justify-content: flex-end; /* aligns to right side */
-  align-items: center;
-  gap: 8px;
-  margin: 10px 0;
-  padding: 0 20px 0 0; /* ✅ Removed left padding */
-  background: #fff;
-  border-bottom: 1px solid #e7e7e7;
-  width: 100%;
-}
 
-/* 🔹 Dropdown Select */
-.view-select {
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: 1px solid #D5D9D9;
-  font-size: 14px;
-  cursor: pointer;
-  background: #fff;
-  transition: border-color 0.2s ease;
-}
+@media (max-width: 600px) {
+  .list-card {
+    flex-direction: column;
+    width: 95%;
+    gap: 12px;
+  }
 
-.view-select:hover {
-  border-color: #888;
+  .list-card-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .list-content {
+    gap: 6px;
+  }
 }

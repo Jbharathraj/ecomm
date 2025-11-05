@@ -1,0 +1,65 @@
+.results-page {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+}
+
+/* Filters sidebar */
+.filters-container {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+/* Main product container */
+.results-container {
+  flex: 1;
+}
+
+/* Filter toggle (hidden on desktop) */
+.filter-toggle {
+  display: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ✅ Responsive: mobile behavior */
+@media (max-width: 768px) {
+  .results-page {
+    flex-direction: column;
+  }
+
+  .filter-toggle {
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+  }
+
+  .filters-container {
+    display: none;
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .filters-container.show {
+    display: block;
+  }
+
+  .results-container {
+    width: 100%;
+  }
+
+  /* Make product cards full width on mobile */
+  .results-list,
+  .product-card {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}

@@ -1,3 +1,4 @@
+/* ================== Star Rating ================== */
 .star-rating {
   display: flex;
   align-items: center;
@@ -6,9 +7,34 @@
 }
 
 .star-rating svg {
+  width: 20px; /* default star size */
+  height: 20px;
   transition: transform 0.2s ease;
 }
 
 .star-rating svg:hover {
   transform: scale(1.2);
+}
+
+/* ================== Mobile Responsive ================== */
+@media screen and (max-width: 768px) {
+  .star-rating {
+    gap: 3px;
+  }
+
+  .star-rating svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .star-rating {
+    gap: 2px;
+  }
+
+  .star-rating svg {
+    width: 16px;
+    height: 16px;
+  }
 }

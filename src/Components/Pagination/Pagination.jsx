@@ -1,3 +1,4 @@
+// src/Components/Pagination.jsx
 import React, { useState, useEffect } from "react";
 import "./Pagination.css";
 
@@ -19,7 +20,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   return (
     <div className="pagination-container">
-      {/* Previous Button */}
+      <button
+        className="page-btn"
+        onClick={() => onPageChange(1)}
+        disabled={currentPage === 1}
+      >
+        ⏮ First
+      </button>
+
       <button
         className="page-btn"
         onClick={() => onPageChange(currentPage - 1)}
@@ -28,7 +36,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         ◀ Prev
       </button>
 
-      {/* Page Numbers */}
       {pageNumbers.map((page) => (
         <button
           key={page}
@@ -39,7 +46,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </button>
       ))}
 
-      {/* Next Button */}
       <button
         className="page-btn"
         onClick={() => onPageChange(currentPage + 1)}

@@ -1,31 +1,31 @@
 .category-radio-group {
   display: flex;
-  flex-direction: column; /* ✅ stack each option vertically */
+  flex-direction: column; /* stack vertically */
   align-items: flex-start;
-  gap: 8px; /* ✅ consistent spacing between each option */
+  gap: 8px; /* space between options */
   margin-top: 8px;
 }
 
 .category-radio-group div {
   display: flex;
-  align-items: flex-start; /* ✅ aligns radio button with top of text */
-  gap: 8px; /* ✅ space between radio and text */
+  align-items: flex-start; /* aligns radio button with top of text */
+  gap: 8px; /* space between radio and text */
 }
 
 .category-radio-group input[type="radio"] {
   accent-color: #1e64a5;
-  width: 18px; /* ✅ consistent with other filters */
+  width: 18px;
   height: 18px;
-  margin-top: 3px; /* ✅ slight offset for better alignment */
+  margin-top: 3px; /* slight offset */
   cursor: pointer;
 }
 
 .category-radio-group label {
-  font-size: 16px; /* ✅ same font size as other filters */
+  font-size: 16px;
   color: #333;
   cursor: pointer;
   transition: 0.2s;
-  line-height: 1.4; /* ✅ makes multi-line labels look balanced */
+  line-height: 1.4; /* balances multi-line labels */
 }
 
 .category-radio-group label:hover {
@@ -35,4 +35,48 @@
 .category-radio-group input[type="radio"]:checked + label {
   color: #1e64a5;
   font-weight: 600;
+}
+
+/* ================== Mobile Responsive ================== */
+@media screen and (max-width: 768px) {
+  .category-radio-group {
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .category-radio-group div {
+    gap: 6px;
+  }
+
+  .category-radio-group input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+  }
+
+  .category-radio-group label {
+    font-size: 14px; /* slightly smaller for mobile */
+  }
+}
+
+/* Optional: Extra small devices */
+@media screen and (max-width: 480px) {
+  .category-radio-group {
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .category-radio-group div {
+    gap: 4px;
+  }
+
+  .category-radio-group input[type="radio"] {
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+  }
+
+  .category-radio-group label {
+    font-size: 13px;
+  }
 }

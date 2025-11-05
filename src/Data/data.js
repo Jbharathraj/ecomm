@@ -1,13 +1,9 @@
-// import React from 'react';
-// import WD001 from '../Assets/Images/WD001.jpg';
 
 
 const data =
 [
   {
     "id": "WD001",
-    // "image": WD001,
-
     "title": "Silk Top",
     "rating": 3.5,
     "price": 228,
@@ -5123,4 +5119,4 @@ const data =
   }
 ]
 
-export default data;
+module.exports = { data }; 

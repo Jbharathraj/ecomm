@@ -1,22 +1,23 @@
+/* ================== Checkbox Group ================== */
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
-  align-items: center; /* ✅ ensures even vertical alignment */
-  gap: 8px 12px; /* ✅ improved spacing between items */
+  align-items: center; /* ensures even vertical alignment */
+  gap: 8px 12px; /* spacing between items */
   margin-top: 6px;
 }
 
 .checkbox-group input[type="checkbox"] {
-  width: 18px; /* ✅ larger checkbox size */
+  width: 18px; /* larger checkbox size */
   height: 18px;
   cursor: pointer;
 }
 
 .checkbox-group label {
   display: flex;
-  align-items: center; /* ✅ aligns checkbox and text evenly */
-  gap: 6px; /* ✅ small gap between checkbox and text */
-  font-size: 16px; /* ✅ increased font size */
+  align-items: center; /* aligns checkbox and text evenly */
+  gap: 6px; /* small gap between checkbox and text */
+  font-size: 16px; /* increased font size */
   cursor: pointer;
   transition: 0.2s;
 }
@@ -28,4 +29,39 @@
 .checkbox-group input[type="checkbox"]:checked + label {
   color: #1e64a5;
   font-weight: 600;
+}
+
+/* ================== Mobile Responsive ================== */
+@media screen and (max-width: 768px) {
+  .checkbox-group {
+    gap: 6px 10px; /* slightly smaller spacing on tablet */
+    margin-top: 4px;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .checkbox-group label {
+    font-size: 14px;
+    gap: 4px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .checkbox-group {
+    gap: 4px 8px; /* even smaller spacing for mobile */
+    margin-top: 3px;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkbox-group label {
+    font-size: 13px;
+    gap: 3px;
+  }
 }

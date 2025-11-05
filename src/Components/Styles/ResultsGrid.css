@@ -116,6 +116,7 @@
   font-size: 16px;
 }
 
+/* ================== Tablet Responsive ================== */
 @media (max-width: 768px) {
   .results-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -133,5 +134,49 @@
   
   .product-sub {
     font-size: 13px;
+  }
+  
+  .btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* ================== Mobile Responsive ================== */
+@media (max-width: 480px) {
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .result-card {
+    padding: 12px;
+  }
+  
+  .product-name {
+    font-size: 13px;
+  }
+  
+  .product-price {
+    font-size: 14px;
+  }
+  
+  .product-sub {
+    font-size: 12px;
+  }
+  
+  .card-actions {
+    gap: 8px;
+    padding-top: 8px;
+  }
+  
+  .btn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  
+  .rating-value {
+    font-size: 12px;
   }
 }
