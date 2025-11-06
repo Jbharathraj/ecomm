@@ -1,19 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import SearchForm from './Components/SearchForm';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <SearchForm />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SearchForm from "./Components/SearchForm";
@@ -24,14 +8,17 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <header className="app-header">
+          <h1 className="app-title">E-commerce</h1>
+        </header>
+
         <Routes>
           <Route path="/" element={<SearchForm />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/" element={<ResultsPage />} />
+          <Route path="/results" element={<ResultsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
-    
   );
 }
 

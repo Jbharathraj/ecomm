@@ -30,8 +30,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
       <button
         className="page-btn"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 4)}
+        disabled={currentPage - 3 <= 1}
       >
         ◀ Prev
       </button>
@@ -48,11 +48,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
       <button
         className="page-btn"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(currentPage + 4)}
+        disabled={currentPage + 4 > totalPages}
       >
         Next ▶
       </button>
+
     </div>
   );
 };

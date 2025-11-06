@@ -15,7 +15,6 @@ import ResultsGrid from "./ResultsGrid/ResultsGrid.jsx";
 const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Initialize states from URL query params
   const [colorQuery, setColorQuery] = useState(searchParams.get("color") || "");
   const [materialQuery, setMaterialQuery] = useState(
     searchParams.get("material") ? searchParams.get("material").split(",") : []
@@ -27,16 +26,14 @@ const SearchForm = () => {
   const [maxPriceQuery, setMaxPriceQuery] = useState(Number(searchParams.get("maxPrice")) || 600);
   const [results, setResults] = useState([]);
 
-  // Options state
   const [colors, setColors] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [categories, setCategories] = useState([]);
   const [sizes, setSizes] = useState([]);
 
-  // Mobile filter toggle
   const [showFilters, setShowFilters] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
-  // Load options once
   useEffect(() => {
     setColors(Options.getColors());
     setMaterials(Options.getMaterial());
@@ -47,7 +44,16 @@ const SearchForm = () => {
     setSizes(sortedSizes);
   }, []);
 
-  // Update URL params whenever filters change
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
   useEffect(() => {
     if (colorQuery) searchParams.set("color", colorQuery); else searchParams.delete("color");
     if (materialQuery.length) searchParams.set("material", materialQuery.join(",")); else searchParams.delete("material");
@@ -56,11 +62,10 @@ const SearchForm = () => {
     if (categoryQuery) searchParams.set("category", categoryQuery); else searchParams.delete("category");
     if (minPriceQuery !== 20) searchParams.set("minPrice", minPriceQuery); else searchParams.delete("minPrice");
     if (maxPriceQuery !== 600) searchParams.set("maxPrice", maxPriceQuery); else searchParams.delete("maxPrice");
-    searchParams.set("page", "1"); // optional: reset page on filter change
+    searchParams.set("page", "1");
     setSearchParams(searchParams);
   }, [colorQuery, materialQuery, sizeQuery, ratingQuery, categoryQuery, minPriceQuery, maxPriceQuery]);
 
-  // Filter data based on current queries
   const handleSearch = () => {
     const filtered = data.filter((item) => {
       const matchesColor =
@@ -112,14 +117,46 @@ const SearchForm = () => {
     setResults(filtered);
   };
 
-  // Auto-run search whenever filters change
   useEffect(() => {
     handleSearch();
   }, [colorQuery, materialQuery, minPriceQuery, maxPriceQuery, sizeQuery, ratingQuery, categoryQuery]);
 
+  // ⚡ Construct active filters
+  const activeFilters = [];
+
+  if (colorQuery) activeFilters.push({ label: `Color: ${colorQuery}`, onRemove: () => setColorQuery("") });
+  if (materialQuery.length)
+    materialQuery.forEach((mat) =>
+      activeFilters.push({
+        label: `Material: ${mat}`,
+        onRemove: () =>
+          setMaterialQuery((prev) => prev.filter((m) => m !== mat)),
+      })
+    );
+  if (sizeQuery) activeFilters.push({ label: `Size: ${sizeQuery}`, onRemove: () => setSizeQuery("") });
+  if (ratingQuery) activeFilters.push({ label: `Rating: ${ratingQuery}+`, onRemove: () => setRatingQuery("") });
+  if (categoryQuery) activeFilters.push({ label: `Category: ${categoryQuery}`, onRemove: () => setCategoryQuery("") });
+  if (minPriceQuery !== 20 || maxPriceQuery !== 600)
+    activeFilters.push({
+      label: `Price: ₹${minPriceQuery}–₹${maxPriceQuery}`,
+      onRemove: () => {
+        setMinPriceQuery(20);
+        setMaxPriceQuery(600);
+      },
+    });
+
+  const clearAllFilters = () => {
+    setColorQuery("");
+    setMaterialQuery([]);
+    setSizeQuery("");
+    setRatingQuery("");
+    setCategoryQuery("");
+    setMinPriceQuery(20);
+    setMaxPriceQuery(600);
+  };
+
   return (
     <div className="search-container">
-      {/* Mobile Filter Button */}
       <button
         className="mobile-filter-btn"
         onClick={() => setShowFilters(!showFilters)}
@@ -127,41 +164,36 @@ const SearchForm = () => {
         {showFilters ? "Close Filters" : "Open Filters"}
       </button>
 
-      {/* Filters Panel */}
       <form
         className={`search-form ${showFilters ? "show-filters" : ""}`}
         onSubmit={(e) => e.preventDefault()}
       >
-        <ColorFilter
-          colors={colors}
-          colorQuery={colorQuery}
-          setColorQuery={setColorQuery}
-        />
-        <MaterialFilter
-          materials={materials}
-          materialQuery={materialQuery}
-          setMaterialQuery={setMaterialQuery}
-        />
-        <PriceFilter
-          minPriceQuery={minPriceQuery}
-          maxPriceQuery={maxPriceQuery}
-          setMinPriceQuery={setMinPriceQuery}
-          setMaxPriceQuery={setMaxPriceQuery}
-        />
-        <SizeFilter
-          sizes={sizes}
-          sizeQuery={sizeQuery}
-          setSizeQuery={setSizeQuery}
-        />
+        <ColorFilter colors={colors} colorQuery={colorQuery} setColorQuery={setColorQuery} />
+        <MaterialFilter materials={materials} materialQuery={materialQuery} setMaterialQuery={setMaterialQuery} />
+        <PriceFilter minPriceQuery={minPriceQuery} maxPriceQuery={maxPriceQuery} setMinPriceQuery={setMinPriceQuery} setMaxPriceQuery={setMaxPriceQuery} />
+        <SizeFilter sizes={sizes} sizeQuery={sizeQuery} setSizeQuery={setSizeQuery} />
         <RatingFilter ratingQuery={ratingQuery} setRatingQuery={setRatingQuery} />
-        <CategoryFilter
-          categories={categories}
-          categoryQuery={categoryQuery}
-          setCategoryQuery={setCategoryQuery}
-        />
+        <CategoryFilter categories={categories} categoryQuery={categoryQuery} setCategoryQuery={setCategoryQuery} />
       </form>
 
-      {/* Results */}
+      {/*  Active Filters Bar */}
+      {activeFilters.length > 0 && (
+        <div className="active-filters-bar">
+          <span className="filter-label">Filtered by:</span>
+          {activeFilters.map((filter, idx) => (
+            <div key={idx} className="filter-chip">
+              {filter.label}
+              <button className="remove-btn" onClick={filter.onRemove}>
+                ✕
+              </button>
+            </div>
+          ))}
+          <button className="clear-all-btn" onClick={clearAllFilters}>
+            Clear All
+          </button>
+        </div>
+      )}
+
       <div className="results">
         {results.length > 0 ? (
           <ResultsGrid results={results} />
@@ -182,3 +214,4 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
+ 

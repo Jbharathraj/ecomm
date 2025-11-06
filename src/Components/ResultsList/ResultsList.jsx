@@ -18,23 +18,18 @@ const ResultsList = ({ items }) => {
     if (!items) return map;
 
     items.forEach((item) => {
-      if (!item.color || item.color.length === 0) {
-        map[item.id] = "/fallback.png";
-        return;
-      }
-
       const colors = Array.isArray(item.color) ? item.color : [item.color];
 
       let availableImages = [];
 
       if (filterColor) {
-        // 1️⃣ If a color filter is applied, select images matching filter
+        //  If a color filter is applied, select images matching filter
         availableImages = Object.keys(productImages)
           .filter((imgKey) => imgKey.toLowerCase().includes(filterColor))
           .map((imgKey) => productImages[imgKey]);
       }
 
-      // 2️⃣ If no filter or no image for filter color, pick images from product colors
+      //  If no filter or no image for filter color, pick images from product colors
       if (availableImages.length === 0) {
         availableImages = Object.keys(productImages)
           .filter((imgKey) =>
@@ -43,11 +38,18 @@ const ResultsList = ({ items }) => {
           .map((imgKey) => productImages[imgKey]);
       }
 
-      // 3️⃣ Pick a random image from availableImages
-      map[item.id] =
-        availableImages.length > 0
-          ? availableImages[Math.floor(Math.random() * availableImages.length)]
-          : "/fallback.png";
+      const key = filterColor ? `${item.id}-${filterColor}` : `${item.id}`;
+
+      const colorImage = availableImages.find((img) => img.includes(key));
+
+      // If found, use it; otherwise pick a random one; fallback if none
+      map[item.id] = colorImage
+        ? colorImage
+        : availableImages.length > 0
+        ? availableImages[
+            Math.floor(Math.random() * availableImages.length)
+          ]
+        : "/fallback.png";
     });
 
     return map;
